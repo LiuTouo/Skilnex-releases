@@ -1,0 +1,744 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Skilnex is a local AI agent skills inventory and sync tool for Windows. Read, organize, and review changes before syncing. Try the browser-only interactive demo."
+    />
+    <meta name="theme-color" content="#173e34" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>
+      Skilnex — Keep your agent skills organized. Review every sync.
+    </title>
+    <link
+      rel="canonical"
+      href="https://liutouo.github.io/Skilnex-releases/en/"
+    />
+    <link
+      rel="alternate"
+      hreflang="zh-Hant"
+      href="https://liutouo.github.io/Skilnex-releases/"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://liutouo.github.io/Skilnex-releases/en/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://liutouo.github.io/Skilnex-releases/"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Skilnex" />
+    <meta property="og:locale" content="en_US" />
+    <meta
+      property="og:title"
+      content="Skilnex — Keep your agent skills organized. Review every sync."
+    />
+    <meta
+      property="og:description"
+      content="Bring skills scattered across your agents into one view. Review changes before you sync."
+    />
+    <meta
+      property="og:url"
+      content="https://liutouo.github.io/Skilnex-releases/en/"
+    />
+    <meta
+      property="og:image"
+      content="https://liutouo.github.io/Skilnex-releases/assets/social.png"
+    />
+    <meta property="og:image:alt" content="Skilnex application icon" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" href="../assets/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="../assets/site.css" />
+    <script type="module" src="../assets/site.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="./" aria-label="Skilnex home"
+          ><img
+            src="../assets/icon.png"
+            alt=""
+            width="34"
+            height="34"
+          />Skilnex<span class="brand-dot" aria-hidden="true">.</span></a
+        >
+        <nav aria-label="Main navigation">
+          <a href="#features">Features</a><a href="#demo">Try it</a
+          ><a href="#engineering">Engineering</a
+          ><a href="#download">Download</a>
+        </nav>
+        <a
+          class="language-link"
+          href="../"
+          lang="zh-Hant"
+          hreflang="zh-Hant"
+          aria-label="閱讀繁體中文"
+          >繁中 <span aria-hidden="true">↗</span></a
+        >
+      </div>
+    </header>
+    <main id="main">
+      <section class="hero shell" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="live-dot" aria-hidden="true"></span> YOUR SKILLS. YOUR
+            CONTROL.
+          </p>
+          <h1 id="hero-title">
+            Great skills.<br />Different agents.<br /><span class="accent-text"
+              >One clear view.</span
+            >
+          </h1>
+          <p class="hero-description">
+            Bring your local agent skills together.
+            <br class="desktop-break" />Find, read, and organize. Then review
+            before you sync.
+          </p>
+          <div class="actions">
+            <a
+              class="button primary"
+              href="https://github.com/LiuTouo/Skilnex-releases/releases/latest"
+              >Download for Windows <span aria-hidden="true">↗</span></a
+            ><a class="button secondary" href="#demo"
+              >Try the workflow <span aria-hidden="true">↓</span></a
+            >
+          </div>
+          <p class="hero-note">
+            Windows x64 <span aria-hidden="true">/</span> Local-first
+            <span aria-hidden="true">/</span> You confirm every sync
+          </p>
+        </div>
+        <div
+          class="hero-visual"
+          aria-label="Conceptual illustration of copying skills between agents, not a real scan"
+        >
+          <div class="visual-topline">
+            <span class="mono">SKILL WORKSPACE</span
+            ><span class="visual-tag">Illustration</span>
+          </div>
+          <div class="skill-sheet">
+            <div class="sheet-heading">
+              <span class="file-icon" aria-hidden="true">≡</span>
+              <div>
+                <span class="mono sheet-path">skills / code-review</span>
+                <h2>One skill. A clearer picture.</h2>
+              </div>
+            </div>
+            <div class="sheet-code" aria-hidden="true">
+              <span class="code-key">name:</span> code-review<br /><span
+                class="code-key"
+                >purpose:</span
+              >
+              review with context<br /><span class="code-key">includes:</span>
+              SKILL.md + references/
+            </div>
+            <div class="sheet-footer">
+              <span class="status-dot" aria-hidden="true"></span> Read · Inspect
+              · Preview
+            </div>
+          </div>
+          <div class="route-line" aria-hidden="true">
+            <span>One-way copy after confirmation</span>↓
+          </div>
+          <div class="agent-destinations">
+            <div>
+              <span class="agent-monogram" aria-hidden="true">Cx</span
+              ><strong>Codex</strong>
+            </div>
+            <div>
+              <span class="agent-monogram warm" aria-hidden="true">Cc</span
+              ><strong>Claude Code</strong>
+            </div>
+            <div>
+              <span class="agent-monogram lavender" aria-hidden="true">Pi</span
+              ><strong>Pi</strong>
+            </div>
+          </div>
+          <div class="visual-footnote">
+            <span aria-hidden="true">↳</span> Local edits? Review them before
+            replacing.
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="agent-strip"
+        aria-label="Built-in skill inventory adapters"
+      >
+        <div class="shell">
+          <p>
+            The agents you already use.<strong> Less back-and-forth.</strong>
+          </p>
+          <ul>
+            <li>Codex</li>
+            <li>Claude Code</li>
+            <li>OpenCode</li>
+            <li>Pi</li>
+            <li>Hermes</li>
+            <li>OpenClaw</li>
+          </ul>
+          <p class="fine-print">
+            Skill discovery and static inventory adapters for six products—not
+            certification of every version or skill at runtime.
+          </p>
+        </div>
+      </section>
+
+      <section
+        id="features"
+        class="section shell"
+        aria-labelledby="features-title"
+      >
+        <div class="section-heading">
+          <p class="eyebrow">01 / LESS FRICTION</p>
+          <h2 id="features-title">
+            From “where is it?”<br />to ready to work.
+          </h2>
+          <p>
+            Keep the way you work with agents.<br />Bring clarity to the skills
+            around them.
+          </p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature featured">
+            <span class="feature-number">01</span>
+            <h3>Find it. Understand it.</h3>
+            <p>
+              See sources, agents, and global or project locations in one place.
+              Search full text and read SKILL.md and attachments without hunting
+              through folders.
+            </p>
+            <div class="mini-search" aria-hidden="true">
+              <span>⌕</span> code review <span class="mini-key">SKILL.md</span>
+            </div>
+            <div class="mini-file" aria-hidden="true">
+              <span>↳</span> references / checklist.md
+            </div>
+            <div class="feature-tags">
+              <span>Source groups</span><span>Multiple instances</span
+              ><span>Shared paths</span>
+            </div>
+          </article>
+          <article class="feature">
+            <span class="feature-number">02</span>
+            <h3>A place for your favorites.</h3>
+            <p>
+              Build your workflow with favorites, notes, and custom groups. You
+              or the original agent still maintain the skill contents. Skilnex
+              keeps them organized.
+            </p>
+            <div class="note-card">
+              <span class="note-label">MY NOTES</span>
+              <p>Review before committing.<br />Remember to check the tests.</p>
+            </div>
+          </article>
+          <article class="feature">
+            <span class="feature-number">03</span>
+            <h3>Sync without the guesswork.</h3>
+            <p>
+              Choose a source and targets. Review differences across the folder.
+              Confirm conflicts separately. If files change after preview, stop
+              and review again.
+            </p>
+            <a class="text-link" href="#demo"
+              >Try it yourself <span aria-hidden="true">↗</span></a
+            >
+            <div class="mini-diff" aria-hidden="true">
+              <span>− Unreviewed replacements</span
+              ><span>+ Changes you choose</span>
+            </div>
+          </article>
+        </div>
+        <div class="secondary-features">
+          <p>
+            <strong>MCP settings, in view.</strong> Read existing configurations
+            and agent associations. No server startup or configuration writes.
+          </p>
+          <p>
+            <strong>Prompts, within reach.</strong> Categories, tags, favorites,
+            copying, and JSON import/export.
+          </p>
+        </div>
+      </section>
+
+      <section id="demo" class="demo-section" aria-labelledby="demo-title">
+        <div class="shell">
+          <div class="section-heading demo-heading">
+            <div>
+              <p class="eyebrow">02 / TRY THE WORKFLOW</p>
+              <h2 id="demo-title">See the changes.<br />Then make the call.</h2>
+            </div>
+            <div class="demo-intro">
+              <span class="pill">Browser-only demo</span>
+              <p>
+                Select a locally modified target.<br />See why Skilnex asks
+                before replacing it.
+              </p>
+              <p class="fine-print">
+                Fixed, fictional data. This page does not read or write local
+                files, connect to agents, upload data, or call a model.
+              </p>
+            </div>
+          </div>
+          <noscript
+            ><p class="notice">
+              The interactive demo needs JavaScript. You can still read the
+              site, change languages, and download the app. The workflow is:
+              choose targets → preview differences → confirm conflicts → one-way
+              sync.
+            </p></noscript
+          >
+          <div id="demo-app" class="demo-app" hidden>
+            <div class="demo-toolbar">
+              <span class="mono">code-review / sync preview</span
+              ><button id="reset-demo" class="button quiet" type="button">
+                Start again <span aria-hidden="true">↺</span>
+              </button>
+            </div>
+            <ol class="stepper" aria-label="Demo steps">
+              <li data-step="select" aria-current="step">
+                <span>1</span>Choose targets
+              </li>
+              <li data-step="preview"><span>2</span>Review & confirm</li>
+              <li data-step="complete"><span>3</span>Demo result</li>
+            </ol>
+            <div class="demo-layout">
+              <div class="demo-sidebar">
+                <div class="demo-source">
+                  <p class="eyebrow">LOCAL SOURCE · DEMO</p>
+                  <strong>Claude Code</strong
+                  ><code>C:/Demo/claude/skills/code-review</code
+                  ><span class="file-count"
+                    >2 files · SKILL.md + attachment</span
+                  >
+                </div>
+                <fieldset id="target-picker">
+                  <legend>Choose target copies</legend>
+                  <p class="fine-print">Example states before syncing.</p>
+                  <label class="target-option"
+                    ><input
+                      type="checkbox"
+                      name="target"
+                      value="codex"
+                      checked
+                    /><span
+                      ><strong>Codex</strong
+                      ><span class="target-state"
+                        >Missing · create a new copy</span
+                      ></span
+                    ><span class="target-symbol" aria-hidden="true"
+                      >+</span
+                    ></label
+                  >
+                  <label class="target-option"
+                    ><input
+                      type="checkbox"
+                      name="target"
+                      value="opencode"
+                    /><span
+                      ><strong>OpenCode</strong
+                      ><span class="target-state"
+                        >Source updated · target unchanged</span
+                      ></span
+                    ><span class="target-symbol" aria-hidden="true"
+                      >↻</span
+                    ></label
+                  >
+                  <label class="target-option"
+                    ><input type="checkbox" name="target" value="pi" /><span
+                      ><strong>Pi</strong
+                      ><span class="target-state"
+                        >Locally modified · confirmation needed</span
+                      ></span
+                    ><span class="target-symbol warning-text" aria-hidden="true"
+                      >!</span
+                    ></label
+                  >
+                </fieldset>
+                <button
+                  id="preview-button"
+                  class="button primary full-width"
+                  type="button"
+                  aria-describedby="demo-status"
+                >
+                  Preview changes <span aria-hidden="true">→</span>
+                </button>
+              </div>
+              <div class="demo-workspace">
+                <p
+                  id="demo-status"
+                  class="demo-status"
+                  role="status"
+                  aria-live="polite"
+                  aria-atomic="true"
+                >
+                  Codex is selected. Preview the content before copying.
+                </p>
+                <div id="demo-empty" class="demo-empty">
+                  <div class="empty-mark" aria-hidden="true">↔</div>
+                  <h3>You choose what changes.</h3>
+                  <p>
+                    Select targets, then preview the file differences.<br />Choose
+                    Pi to try handling a local-edit conflict.
+                  </p>
+                  <span class="mono">NOTHING CHANGES WITHOUT YOUR REVIEW.</span>
+                </div>
+                <div id="preview-panel" hidden>
+                  <div class="preview-heading">
+                    <h3 id="preview-title" tabindex="-1">File differences</h3>
+                    <span class="pill">Example content</span>
+                  </div>
+                  <div id="diff-list"></div>
+                  <div class="preview-actions">
+                    <button
+                      id="apply-button"
+                      class="button primary"
+                      type="button"
+                      aria-describedby="demo-status"
+                    >
+                      Confirm demo sync
+                      <span aria-hidden="true">→</span></button
+                    ><button
+                      id="invalidate-button"
+                      class="button text-button"
+                      type="button"
+                    >
+                      Simulate a change after preview
+                    </button>
+                  </div>
+                  <p class="fine-print">
+                    The desktop app preserves a copy before replacement. This
+                    demo creates no real files or backups.
+                  </p>
+                </div>
+                <div id="demo-result" class="demo-result" hidden>
+                  <span class="result-mark" aria-hidden="true">✓</span>
+                  <h3 id="result-title" tabindex="-1">Demo sync complete</h3>
+                  <p>No real files were changed.</p>
+                  <ul id="result-list"></ul>
+                  <p class="fine-print">
+                    The desktop app's operation log shows records and available
+                    recovery actions. Recovery checks the current state too.
+                  </p>
+                  <a class="text-link" href="#download"
+                    >Bring this workflow to your desktop
+                    <span aria-hidden="true">↗</span></a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="demo-caption">
+            This is a workflow illustration, not a desktop screenshot or proof
+            of an agent's runtime behavior.
+          </p>
+        </div>
+      </section>
+
+      <section
+        id="download"
+        class="section shell download-section"
+        aria-labelledby="download-title"
+      >
+        <div class="section-heading">
+          <p class="eyebrow">03 / MAKE IT YOUR WORKSPACE</p>
+          <h2 id="download-title">Get organized.<br />Don't start over.</h2>
+          <p>
+            Keep your skills in the tools you know.<br />Start with a local
+            scan.
+          </p>
+        </div>
+        <div class="download-options">
+          <article>
+            <div class="download-heading">
+              <h3>Windows installer</h3>
+              <span class="pill">Everyday use</span>
+            </div>
+            <p>
+              Download <code>*_x64-setup.exe</code> and follow the installer.
+              App data lives in your user-local application data directory.
+            </p>
+            <a
+              class="button primary"
+              href="https://github.com/LiuTouo/Skilnex-releases/releases/latest"
+              >Get the latest release <span aria-hidden="true">↗</span></a
+            >
+          </article>
+          <article>
+            <div class="download-heading">
+              <h3>Portable edition</h3>
+              <span class="pill neutral">Moves with you</span>
+            </div>
+            <p>
+              Extract the entire <code>*-portable.zip</code> and run
+              <code>Skilnex.exe</code>. Keep <code>portable.flag</code> and
+              <code>data</code> with the app when moving it.
+            </p>
+            <a
+              class="button secondary"
+              href="https://github.com/LiuTouo/Skilnex-releases/releases/latest"
+              >View download assets <span aria-hidden="true">↗</span></a
+            >
+          </article>
+        </div>
+        <p class="requirements">
+          Requires Windows x64 and Microsoft WebView2 Runtime. The installer can
+          download a missing Runtime; portable use needs it too. No Node.js or
+          Rust required.
+        </p>
+        <ol class="quick-start">
+          <li>
+            <span>01</span>
+            <div>
+              <h3>Scan</h3>
+              <p>
+                Discover local agents. Add projects or custom directories as
+                needed.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>02</span>
+            <div>
+              <h3>Read</h3>
+              <p>
+                Check the source, read the content and attachments, and leave a
+                note.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>03</span>
+            <div>
+              <h3>Sync</h3>
+              <p>
+                Choose targets, review differences, and confirm a one-way copy.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section
+        id="engineering"
+        class="engineering-section"
+        aria-labelledby="engineering-title"
+      >
+        <div class="shell">
+          <div class="section-heading">
+            <p class="eyebrow">04 / UNDER THE SURFACE</p>
+            <h2 id="engineering-title">
+              Simple to use.<br />Deliberate by design.
+            </h2>
+            <p>
+              A quick look at the engineering, for developers and hiring teams.
+            </p>
+          </div>
+          <ol
+            class="architecture"
+            aria-label="Desktop application architecture"
+          >
+            <li>
+              <span>INTERFACE</span><strong>React + TypeScript</strong>
+              <p>Reading, organization, and previews</p>
+            </li>
+            <li>
+              <span>DESKTOP BRIDGE</span><strong>Tauri 2 · IPC</strong>
+              <p>A boundary for local operations</p>
+            </li>
+            <li>
+              <span>LOCAL ENGINE</span><strong>Rust</strong>
+              <p>Agent adapters, files, and settings</p>
+            </li>
+            <li>
+              <span>PERSISTENCE</span><strong>SQLite + Files</strong>
+              <p>App data, operation records, and copies</p>
+            </li>
+          </ol>
+          <div class="engineering-grid">
+            <article>
+              <span class="engineering-index">A / ADAPT</span>
+              <h3>Handle real-world differences</h3>
+              <p>
+                Agent directories, configuration formats, instances, and scopes
+                differ. Inventory identifies shared paths without treating every
+                matching skill name as the same copy.
+              </p>
+            </article>
+            <article>
+              <span class="engineering-index">B / PROTECT</span>
+              <h3>Check before acting</h3>
+              <p>
+                Content hashes track sync state. Sources and targets are checked
+                again after preview. Conflicts need explicit confirmation;
+                replacements preserve a copy and operation records.
+              </p>
+            </article>
+            <article>
+              <span class="engineering-index">C / DELIVER</span>
+              <h3>From tests to a usable product</h3>
+              <p>
+                The desktop project uses Rust, Vitest, and Playwright tests.
+                GitHub Actions validates, packages, and publishes Windows
+                installers and portable archives.
+              </p>
+            </article>
+          </div>
+          <p class="engineering-note">
+            Tests and static adapters are not comprehensive runtime
+            certification for all six agents. Desktop source code is not public;
+            the public repository hosts releases, product information, and this
+            website.
+          </p>
+        </div>
+      </section>
+
+      <section class="section shell faq-section" aria-labelledby="faq-title">
+        <div class="section-heading">
+          <p class="eyebrow">05 / GOOD TO KNOW</p>
+          <h2 id="faq-title">Clear capabilities.<br />Clear boundaries.</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Does Skilnex run skills or orchestrate agents?</summary>
+            <p>
+              No. It manages local skill files and supporting content, with
+              reading, organization, static checks, and manually confirmed
+              one-way sync. It is not a chat interface or a multi-agent task
+              orchestration platform.
+            </p>
+          </details>
+          <details>
+            <summary>Will sync automatically overwrite my changes?</summary>
+            <p>
+              Unconfirmed local changes are not directly overwritten.
+              Conflicting targets need separate replacement approval; source or
+              target changes after preview block execution. Replacements
+              preserve a copy, and recovery checks the current state too. There
+              is no automatic background sync, and missing sources do not
+              automatically delete targets.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Does passing a check mean a skill is safe and will run?
+            </summary>
+            <p>
+              No. Manifest, structure, link, and command hints are static
+              checks, not security guarantees or cross-agent certification.
+              Loading still depends on agent versions, trust, permissions,
+              existing conversations, and other conditions.
+            </p>
+          </details>
+          <details>
+            <summary>
+              What does MCP and external skill management include?
+            </summary>
+            <p>
+              MCP inspection reads supported existing configurations only. It
+              does not start servers, write settings, or claim successful
+              connections. External skills remain updated by the original agent,
+              installer, or you; Skilnex does not check for external-copy
+              updates or update them in place. Package-managed, plugin,
+              built-in, and linked directories are not sync overwrite targets.
+            </p>
+          </details>
+          <details>
+            <summary>Which systems are supported? Is it fully offline?</summary>
+            <p>
+              Downloads currently target Windows x64 and require WebView2
+              Runtime. Local inventory, reading, and sync work on local files;
+              GitHub imports, downloads, version checks, and app updates may
+              need the network. No support is claimed for macOS, Linux,
+              remote/WSL environments, private skill sources, or third-party MCP
+              extensions.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Is it open source? What is promised for enterprise use?
+            </summary>
+            <p>
+              The desktop source code is not public. A public download does not
+              imply an open-source or commercial-use license. This page adds no
+              license terms, enterprise compliance claims, or SLA. If
+              organizational policies block installation, follow your
+              administrator's policy rather than disabling security protections.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section class="closing shell" aria-labelledby="closing-title">
+        <div>
+          <p class="eyebrow">A CLEARER WAY TO WORK</p>
+          <h2 id="closing-title">
+            Let your skills grow.<br />Keep your workspace clear.
+          </h2>
+        </div>
+        <a
+          class="button primary"
+          href="https://github.com/LiuTouo/Skilnex-releases/releases/latest"
+          >Download Skilnex <span aria-hidden="true">↗</span></a
+        >
+      </section>
+    </main>
+    <footer class="site-footer shell">
+      <a class="brand" href="./"
+        ><img
+          src="../assets/icon.png"
+          alt=""
+          width="26"
+          height="26"
+        />Skilnex</a
+      >
+      <p>Local skills. Deliberate choices.</p>
+      <nav aria-label="Footer links">
+        <a href="https://github.com/LiuTouo/Skilnex-releases">GitHub</a
+        ><a href="https://github.com/LiuTouo/Skilnex-releases/releases"
+          >All releases</a
+        ><a href="https://github.com/LiuTouo">Author</a
+        ><a href="../" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a>
+      </nav>
+    </footer>
+    <template id="diff-template"
+      ><article class="diff-card">
+        <div class="diff-card-heading">
+          <h4 data-target-title></h4>
+          <span class="pill" data-state></span>
+        </div>
+        <p class="diff-path" data-target-path></p>
+        <div class="file-diff">
+          <div class="file-label">
+            <code>SKILL.md</code><span data-file-state></span>
+          </div>
+          <pre
+            tabindex="0"
+            aria-label="Example SKILL.md differences"
+          ><code data-manifest-diff></code></pre>
+        </div>
+        <div class="file-diff">
+          <div class="file-label">
+            <code>references/checklist.md</code><span data-file-state></span>
+          </div>
+          <pre
+            tabindex="0"
+            aria-label="Example checklist.md differences"
+          ><code data-reference-diff></code></pre>
+        </div>
+        <label class="conflict-confirm" hidden
+          ><input type="checkbox" data-confirm /><span data-confirm-text></span
+        ></label></article
+    ></template>
+  </body>
+</html>

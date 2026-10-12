@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Skilnex：Windows 本機 AI Agent 技能盤點與同步工具。集中閱讀、整理技能，看過差異再同步。立即體驗不讀寫本機的互動示範。"
+    />
+    <meta name="theme-color" content="#173e34" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <title>Skilnex — 讓 Agent 技能，整理有序、同步有據</title>
+    <link rel="canonical" href="https://liutouo.github.io/Skilnex-releases/" />
+    <link
+      rel="alternate"
+      hreflang="zh-Hant"
+      href="https://liutouo.github.io/Skilnex-releases/"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://liutouo.github.io/Skilnex-releases/en/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://liutouo.github.io/Skilnex-releases/"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Skilnex" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta
+      property="og:title"
+      content="Skilnex — 讓 Agent 技能，整理有序、同步有據"
+    />
+    <meta
+      property="og:description"
+      content="把散落在不同 Agent 的技能放在同一個視野裡。先看差異，再決定同步。"
+    />
+    <meta
+      property="og:url"
+      content="https://liutouo.github.io/Skilnex-releases/"
+    />
+    <meta
+      property="og:image"
+      content="https://liutouo.github.io/Skilnex-releases/assets/social.png"
+    />
+    <meta property="og:image:alt" content="Skilnex 應用程式圖示" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="assets/site.css" />
+    <script type="module" src="assets/site.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳至主要內容</a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="./" aria-label="Skilnex 首頁"
+          ><img
+            src="assets/icon.png"
+            alt=""
+            width="34"
+            height="34"
+          />Skilnex<span class="brand-dot" aria-hidden="true">.</span></a
+        >
+        <nav aria-label="主要導覽">
+          <a href="#features">功能</a><a href="#demo">互動示範</a
+          ><a href="#engineering">工程設計</a><a href="#download">下載</a>
+        </nav>
+        <a
+          class="language-link"
+          href="en/"
+          lang="en"
+          hreflang="en"
+          aria-label="Read in English"
+          >EN <span aria-hidden="true">↗</span></a
+        >
+      </div>
+    </header>
+    <main id="main">
+      <section class="hero shell" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="live-dot" aria-hidden="true"></span> YOUR SKILLS. YOUR
+            CONTROL.
+          </p>
+          <h1 id="hero-title">
+            好用的技能，<br />不該散落在<br /><span class="accent-text"
+              >各個 Agent。</span
+            >
+          </h1>
+          <p class="hero-description">
+            把本機 Agent 技能放在同一個視野裡。<br
+              class="desktop-break"
+            />找到、讀懂、整理，再看過差異後同步。
+          </p>
+          <div class="actions">
+            <a
+              class="button primary"
+              href="https://github.com/LiuTouo/Skilnex-releases/releases/latest"
+              >下載 Windows 版 <span aria-hidden="true">↗</span></a
+            ><a class="button secondary" href="#demo"
+              >先體驗，再下載 <span aria-hidden="true">↓</span></a
+            >
+          </div>
+          <p class="hero-note">
+            Windows x64 <span aria-hidden="true">／</span> 本機優先
+            <span aria-hidden="true">／</span> 每次同步，由你確認
+          </p>
+        </div>
+        <div
+          class="hero-visual"
+          aria-label="技能跨 Agent 複製的概念示意，非實際掃描結果"
+        >
+          <div class="visual-topline">
+            <span class="mono">SKILL WORKSPACE</span
+            ><span class="visual-tag">流程示意</span>
+          </div>
+          <div class="skill-sheet">
+            <div class="sheet-heading">
+              <span class="file-icon" aria-hidden="true">≡</span>
+              <div>
+                <span class="mono sheet-path">skills / code-review</span>
+                <h2>一份技能，清楚掌握。</h2>
+              </div>
+            </div>
+            <div class="sheet-code" aria-hidden="true">
+              <span class="code-key">name:</span> code-review<br /><span
+                class="code-key"
+                >purpose:</span
+              >
+              review with context<br /><span class="code-key">includes:</span>
+              SKILL.md + references/
+            </div>
+            <div class="sheet-footer">
+              <span class="status-dot" aria-hidden="true"></span> 閱讀 · 檢查 ·
+              預覽
+            </div>
+          </div>
+          <div class="route-line" aria-hidden="true">
+            <span>確認後單向複製</span>↓
+          </div>
+          <div class="agent-destinations">
+            <div>
+              <span class="agent-monogram" aria-hidden="true">Cx</span
+              ><strong>Codex</strong>
+            </div>
+            <div>
+              <span class="agent-monogram warm" aria-hidden="true">Cc</span
+              ><strong>Claude Code</strong>
+            </div>
+            <div>
+              <span class="agent-monogram lavender" aria-hidden="true">Pi</span
+              ><strong>Pi</strong>
+            </div>
+          </div>
+          <div class="visual-footnote">
+            <span aria-hidden="true">↳</span> 目標有修改？先確認，不直接覆寫。
+          </div>
+        </div>
+      </section>
+
+      <section class="agent-strip" aria-label="內建技能盤點適配">
+        <div class="shell">
+          <p>在熟悉的 Agent 之間，<strong>少一點來回整理。</strong></p>
+          <ul>
+            <li>Codex</li>
+            <li>Claude Code</li>
+            <li>OpenCode</li>
+            <li>Pi</li>
+            <li>Hermes</li>
+            <li>OpenClaw</li>
+          </ul>
+          <p class="fine-print">
+            六種產品的技能偵測與靜態盤點適配，不代表所有版本或技能都已通過實際執行驗證。
+          </p>
+        </div>
+      </section>
+
+      <section
+        id="features"
+        class="section shell"
+        aria-labelledby="features-title"
+      >
+        <div class="section-heading">
+          <p class="eyebrow">01 / LESS FRICTION</p>
+          <h2 id="features-title">從「放在哪？」<br />到「知道怎麼用」。</h2>
+          <p>
+            不改變你使用 Agent 的方式，<br />把技能管理中容易混亂的部分，整理清楚。
+          </p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature featured">
+            <span class="feature-number">01</span>
+            <h3>先找到，再讀懂。</h3>
+            <p>
+              來源、Agent、全域或專案位置集中呈現。全文搜尋、閱讀 SKILL.md
+              與附件，不必在資料夾之間來回。
+            </p>
+            <div class="mini-search" aria-hidden="true">
+              <span>⌕</span> code review <span class="mini-key">SKILL.md</span>
+            </div>
+            <div class="mini-file" aria-hidden="true">
+              <span>↳</span> references / checklist.md
+            </div>
+            <div class="feature-tags">
+              <span>來源分組</span><span>多實例</span><span>共享路徑辨識</span>
+            </div>
+          </article>
+          <article class="feature">
+            <span class="feature-number">02</span>
+            <h3>常用技能，有自己的位置。</h3>
+            <p>
+              用收藏、筆記與自訂分組建立工作習慣。技能內容仍由你或原 Agent
+              維護，Skilnex 負責整理與閱讀。
+            </p>
+            <div class="note-card">
+              <span class="note-label">我的筆記</span>
+              <p>提交前先做 review，<br />記得一起確認測試。</p>
+            </div>
+          </article>
+          <article class="feature">
+            <span class="feature-number">03</span>
+            <h3>同步，不靠猜。</h3>
+            <p>
+              選定來源與目標，先看整個資料夾的差異。有衝突就另外確認；預覽後有變動，就先停下來。
+            </p>
+            <a class="text-link" href="#demo"
+              >親自試一次 <span aria-hidden="true">↗</span></a
+            >
+            <div class="mini-diff" aria-hidden="true">
+              <span>− 未確認的覆寫</span><span>+ 看過差異，再決定</span>
+            </div>
+          </article>
+        </div>
+        <div class="secondary-features">
+          <p>
+            <strong>MCP 設定，一起看。</strong>唯讀盤點既有配置與 Agent
+            關聯，不啟動服務、不寫設定。
+          </p>
+          <p>
+            <strong>提示詞，隨手用。</strong>分類、標籤、收藏、複製，以及 JSON
+            匯入／匯出。
+          </p>
+        </div>
+      </section>
+
+      <section id="demo" class="demo-section" aria-labelledby="demo-title">
+        <div class="shell">
+          <div class="section-heading demo-heading">
+            <div>
+              <p class="eyebrow">02 / TRY THE WORKFLOW</p>
+              <h2 id="demo-title">先看差異。<br />再按下確認。</h2>
+            </div>
+            <div class="demo-intro">
+              <span class="pill">瀏覽器互動示範</span>
+              <p>
+                試著選擇「目標有修改」的副本，<br />看看 Skilnex
+                為什麼不會直接替你覆寫。
+              </p>
+              <p class="fine-print">
+                固定虛構資料。此網頁不讀寫本機、不連接
+                Agent、不上傳資料，也不呼叫模型。
+              </p>
+            </div>
+          </div>
+          <noscript
+            ><p class="notice">
+              互動示範需要
+              JavaScript。你仍可閱讀功能、切換語言與下載桌面版。正式流程是：選擇目標
+              → 預覽差異 → 確認衝突 → 單向同步。
+            </p></noscript
+          >
+          <div id="demo-app" class="demo-app" hidden>
+            <div class="demo-toolbar">
+              <span class="mono">code-review / sync preview</span
+              ><button id="reset-demo" class="button quiet" type="button">
+                重新體驗 <span aria-hidden="true">↺</span>
+              </button>
+            </div>
+            <ol class="stepper" aria-label="示範步驟">
+              <li data-step="select" aria-current="step">
+                <span>1</span>選擇目標
+              </li>
+              <li data-step="preview"><span>2</span>預覽與確認</li>
+              <li data-step="complete"><span>3</span>示範結果</li>
+            </ol>
+            <div class="demo-layout">
+              <div class="demo-sidebar">
+                <div class="demo-source">
+                  <p class="eyebrow">本機來源 · 示範</p>
+                  <strong>Claude Code</strong
+                  ><code>C:/Demo/claude/skills/code-review</code
+                  ><span class="file-count">2 個檔案 · SKILL.md + 附件</span>
+                </div>
+                <fieldset id="target-picker">
+                  <legend>選擇目標副本</legend>
+                  <p class="fine-print">以下為同步前的示範狀態。</p>
+                  <label class="target-option"
+                    ><input
+                      type="checkbox"
+                      name="target"
+                      value="codex"
+                      checked
+                    /><span
+                      ><strong>Codex</strong
+                      ><span class="target-state"
+                        >尚未存在 · 建立新副本</span
+                      ></span
+                    ><span class="target-symbol" aria-hidden="true"
+                      >+</span
+                    ></label
+                  >
+                  <label class="target-option"
+                    ><input
+                      type="checkbox"
+                      name="target"
+                      value="opencode"
+                    /><span
+                      ><strong>OpenCode</strong
+                      ><span class="target-state"
+                        >來源已更新 · 目標未修改</span
+                      ></span
+                    ><span class="target-symbol" aria-hidden="true"
+                      >↻</span
+                    ></label
+                  >
+                  <label class="target-option"
+                    ><input type="checkbox" name="target" value="pi" /><span
+                      ><strong>Pi</strong
+                      ><span class="target-state"
+                        >目標有修改 · 需要確認</span
+                      ></span
+                    ><span class="target-symbol warning-text" aria-hidden="true"
+                      >!</span
+                    ></label
+                  >
+                </fieldset>
+                <button
+                  id="preview-button"
+                  class="button primary full-width"
+                  type="button"
+                  aria-describedby="demo-status"
+                >
+                  預覽變更 <span aria-hidden="true">→</span>
+                </button>
+              </div>
+              <div class="demo-workspace">
+                <p
+                  id="demo-status"
+                  class="demo-status"
+                  role="status"
+                  aria-live="polite"
+                  aria-atomic="true"
+                >
+                  已選擇 Codex。先預覽，檢查將複製的內容。
+                </p>
+                <div id="demo-empty" class="demo-empty">
+                  <div class="empty-mark" aria-hidden="true">↔</div>
+                  <h3>你決定，要改變什麼。</h3>
+                  <p>
+                    左側選擇目標，再預覽檔案差異。<br />也可以選擇
+                    Pi，體驗修改衝突的處理。
+                  </p>
+                  <span class="mono">NOTHING CHANGES WITHOUT YOUR REVIEW.</span>
+                </div>
+                <div id="preview-panel" hidden>
+                  <div class="preview-heading">
+                    <h3 id="preview-title" tabindex="-1">檔案差異預覽</h3>
+                    <span class="pill">示範內容</span>
+                  </div>
+                  <div id="diff-list"></div>
+                  <div class="preview-actions">
+                    <button
+                      id="apply-button"
+                      class="button primary"
+                      type="button"
+                      aria-describedby="demo-status"
+                    >
+                      確認示範同步 <span aria-hidden="true">→</span></button
+                    ><button
+                      id="invalidate-button"
+                      class="button text-button"
+                      type="button"
+                    >
+                      模擬預覽後檔案變更
+                    </button>
+                  </div>
+                  <p class="fine-print">
+                    正式程式會在取代前保存副本；此示範不會建立任何真實檔案或備份。
+                  </p>
+                </div>
+                <div id="demo-result" class="demo-result" hidden>
+                  <span class="result-mark" aria-hidden="true">✓</span>
+                  <h3 id="result-title" tabindex="-1">示範同步完成</h3>
+                  <p>未操作任何真實檔案。</p>
+                  <ul id="result-list"></ul>
+                  <p class="fine-print">
+                    正式應用可在操作日誌查看紀錄與可用的還原操作。還原也會重新檢查現況。
+                  </p>
+                  <a class="text-link" href="#download"
+                    >把這個流程帶到你的桌面 <span aria-hidden="true">↗</span></a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="demo-caption">
+            互動介面為流程示意，不是桌面應用截圖，也不代表任一 Agent
+            的執行驗證。
+          </p>
+        </div>
+      </section>
+
+      <section
+        id="download"
+        class="section shell download-section"
+        aria-labelledby="download-title"
+      >
+        <div class="section-heading">
+          <p class="eyebrow">03 / MAKE IT YOUR WORKSPACE</p>
+          <h2 id="download-title">開始整理，<br />不用重來。</h2>
+          <p>技能留在熟悉的工具裡。<br />從一次本機掃描開始。</p>
+        </div>
+        <div class="download-options">
+          <article>
+            <div class="download-heading">
+              <h3>Windows 安裝版</h3>
+              <span class="pill">一般使用</span>
+            </div>
+            <p>
+              下載
+              <code>*_x64-setup.exe</code>
+              並依指示安裝。應用資料放在使用者的本機應用資料目錄。
+            </p>
+            <a
+              class="button primary"
+              href="https://github.com/LiuTouo/Skilnex-releases/releases/latest"
+              >前往最新 Release <span aria-hidden="true">↗</span></a
+            >
+          </article>
+          <article>
+            <div class="download-heading">
+              <h3>Portable 免安裝版</h3>
+              <span class="pill neutral">隨資料夾移動</span>
+            </div>
+            <p>
+              下載 <code>*-portable.zip</code> 並完整解壓，執行
+              <code>Skilnex.exe</code>。移動時保留 <code>portable.flag</code> 與
+              <code>data</code>。
+            </p>
+            <a
+              class="button secondary"
+              href="https://github.com/LiuTouo/Skilnex-releases/releases/latest"
+              >查看下載檔案 <span aria-hidden="true">↗</span></a
+            >
+          </article>
+        </div>
+        <p class="requirements">
+          需要 Windows x64 與 Microsoft WebView2 Runtime。安裝版可在缺少 Runtime
+          時下載安裝；免安裝版也需要 Runtime。不需要 Node.js 或 Rust。
+        </p>
+        <ol class="quick-start">
+          <li>
+            <span>01</span>
+            <div>
+              <h3>掃描</h3>
+              <p>偵測本機 Agent，按需要加入專案或自訂目錄。</p>
+            </div>
+          </li>
+          <li>
+            <span>02</span>
+            <div>
+              <h3>閱讀</h3>
+              <p>確認來源，閱讀內容與附件，留下自己的筆記。</p>
+            </div>
+          </li>
+          <li>
+            <span>03</span>
+            <div>
+              <h3>同步</h3>
+              <p>選擇目標，看過差異，確認後單向複製。</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section
+        id="engineering"
+        class="engineering-section"
+        aria-labelledby="engineering-title"
+      >
+        <div class="shell">
+          <div class="section-heading">
+            <p class="eyebrow">04 / UNDER THE SURFACE</p>
+            <h2 id="engineering-title">
+              簡單的操作背後，<br />是明確的工程邊界。
+            </h2>
+            <p>給想快速了解技術設計的工程師與招募團隊。</p>
+          </div>
+          <ol class="architecture" aria-label="桌面應用架構">
+            <li>
+              <span>INTERFACE</span><strong>React + TypeScript</strong>
+              <p>閱讀、整理與差異預覽</p>
+            </li>
+            <li>
+              <span>DESKTOP BRIDGE</span><strong>Tauri 2 · IPC</strong>
+              <p>介面與本機操作的邊界</p>
+            </li>
+            <li>
+              <span>LOCAL ENGINE</span><strong>Rust</strong>
+              <p>Agent 適配、檔案與設定操作</p>
+            </li>
+            <li>
+              <span>PERSISTENCE</span><strong>SQLite + Files</strong>
+              <p>應用資料、操作紀錄與副本</p>
+            </li>
+          </ol>
+          <div class="engineering-grid">
+            <article>
+              <span class="engineering-index">A / ADAPT</span>
+              <h3>處理真實工具的差異</h3>
+              <p>
+                不同 Agent
+                的目錄、設定格式、實例與作用域各不相同。盤點辨識共享位置，不把同名技能直接當成同一份。
+              </p>
+            </article>
+            <article>
+              <span class="engineering-index">B / PROTECT</span>
+              <h3>先檢查，再執行</h3>
+              <p>
+                以內容雜湊比對同步狀態；預覽後重新檢查來源與目標。衝突需明確確認，取代前保存副本，保留操作紀錄。
+              </p>
+            </article>
+            <article>
+              <span class="engineering-index">C / DELIVER</span>
+              <h3>從測試到可下載的產品</h3>
+              <p>
+                桌面專案使用 Rust、Vitest、Playwright 測試，並由 GitHub Actions
+                驗證、封裝與發布 Windows 安裝版及免安裝版。
+              </p>
+            </article>
+          </div>
+          <p class="engineering-note">
+            測試與靜態適配不等於六種 Agent 的全面 runtime
+            認證。桌面原始碼未公開；公開庫提供發行檔、產品介紹與本網站。
+          </p>
+        </div>
+      </section>
+
+      <section class="section shell faq-section" aria-labelledby="faq-title">
+        <div class="section-heading">
+          <p class="eyebrow">05 / GOOD TO KNOW</p>
+          <h2 id="faq-title">了解能力，<br />也了解邊界。</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Skilnex 會幫我執行技能或派遣 Agent 嗎？</summary>
+            <p>
+              不會。它管理本機技能檔案與附帶內容，提供閱讀、整理、靜態檢查與人工確認的單向同步。它不是
+              AI 聊天介面，也不是多 Agent 任務編排平台。
+            </p>
+          </details>
+          <details>
+            <summary>同步會自動覆蓋我的修改嗎？</summary>
+            <p>
+              不會直接覆蓋未確認的修改。目標有衝突時需要另外同意取代；來源或目標在預覽後變動，會阻擋執行。取代前保存副本，還原時也會重新檢查現況。不背景自動同步，來源消失也不自動刪除目標。
+            </p>
+          </details>
+          <details>
+            <summary>通過檢查，代表技能安全而且一定能執行嗎？</summary>
+            <p>
+              不是。manifest、檔案結構、連結與命令提示都是靜態檢查，不能保證安全或跨
+              Agent 相容。實際載入仍受 Agent
+              版本、信任、權限及既有對話等條件影響。
+            </p>
+          </details>
+          <details>
+            <summary>MCP 與外部技能的管理範圍是什麼？</summary>
+            <p>
+              MCP
+              僅唯讀盤點已支援格式的既有設定，不啟動服務、不寫設定、不聲稱連線成功。外部技能仍由原
+              Agent、安裝工具或你更新；Skilnex
+              不提供外部副本更新檢查或原地更新。套件、外掛、內建及連結目錄不作為同步覆寫目標。
+            </p>
+          </details>
+          <details>
+            <summary>支援哪些系統？需要一直連網嗎？</summary>
+            <p>
+              目前提供 Windows x64，並需要 WebView2
+              Runtime。本機盤點、閱讀與同步處理本機檔案；GitHub
+              匯入、下載、版本檢查與應用更新可能需要網路。不宣稱
+              macOS、Linux、遠端／WSL、私人技能來源或第三方 MCP extension 支援。
+            </p>
+          </details>
+          <details>
+            <summary>這是開源軟體嗎？企業使用有什麼承諾？</summary>
+            <p>
+              桌面原始碼目前未公開。公開下載不等於開源或已授予商用授權，本頁不新增授權條款、企業合規或
+              SLA
+              承諾。若公司政策阻擋安裝，請依管理政策處理，不建議關閉安全保護。
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section class="closing shell" aria-labelledby="closing-title">
+        <div>
+          <p class="eyebrow">A CLEARER WAY TO WORK</p>
+          <h2 id="closing-title">技能繼續累積。<br />管理，保持清楚。</h2>
+        </div>
+        <a
+          class="button primary"
+          href="https://github.com/LiuTouo/Skilnex-releases/releases/latest"
+          >下載 Skilnex <span aria-hidden="true">↗</span></a
+        >
+      </section>
+    </main>
+    <footer class="site-footer shell">
+      <a class="brand" href="./"
+        ><img src="assets/icon.png" alt="" width="26" height="26" />Skilnex</a
+      >
+      <p>本機技能。明確選擇。</p>
+      <nav aria-label="頁尾連結">
+        <a href="https://github.com/LiuTouo/Skilnex-releases">GitHub</a
+        ><a href="https://github.com/LiuTouo/Skilnex-releases/releases"
+          >所有版本</a
+        ><a href="https://github.com/LiuTouo">作者</a
+        ><a href="en/" lang="en" hreflang="en">English</a>
+      </nav>
+    </footer>
+    <template id="diff-template"
+      ><article class="diff-card">
+        <div class="diff-card-heading">
+          <h4 data-target-title></h4>
+          <span class="pill" data-state></span>
+        </div>
+        <p class="diff-path" data-target-path></p>
+        <div class="file-diff">
+          <div class="file-label">
+            <code>SKILL.md</code><span data-file-state></span>
+          </div>
+          <pre
+            tabindex="0"
+            aria-label="SKILL.md 示範差異"
+          ><code data-manifest-diff></code></pre>
+        </div>
+        <div class="file-diff">
+          <div class="file-label">
+            <code>references/checklist.md</code><span data-file-state></span>
+          </div>
+          <pre
+            tabindex="0"
+            aria-label="checklist.md 示範差異"
+          ><code data-reference-diff></code></pre>
+        </div>
+        <label class="conflict-confirm" hidden
+          ><input type="checkbox" data-confirm /><span data-confirm-text></span
+        ></label></article
+    ></template>
+  </body>
+</html>
