@@ -33,6 +33,11 @@ for (const locale of locales) {
     }) => {
       await expect(page.locator("html")).toHaveAttribute("lang", locale.lang);
       await expect(page.locator("h1")).toBeVisible();
+      await expect(page.locator(".repo-link")).toBeVisible();
+      await expect(page.locator(".repo-link")).toHaveAttribute(
+        "href",
+        "https://github.com/LiuTouo/Skilnex-releases",
+      );
       await expect(page.locator("#demo-app")).toBeVisible();
       await expect(page.locator("link[rel=canonical]")).toHaveAttribute(
         "href",
