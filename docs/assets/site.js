@@ -1,3 +1,47 @@
+// Motion: tag reveal targets and reveal them as they enter the viewport.
+// The html.js gate keeps content visible without JavaScript or under reduced motion.
+document.documentElement.classList.add("js");
+const revealElements = [
+  ...document.querySelectorAll(
+    [
+      ".section-heading",
+      ".feature-grid > .feature",
+      ".secondary-features > p",
+      ".native-player",
+      ".native-transcript",
+      ".download-options > article",
+      ".quick-start > li",
+      ".agent-strip li",
+      ".faq-list > details",
+      ".closing > *",
+    ].join(", "),
+  ),
+];
+for (const element of revealElements) {
+  element.classList.add("reveal");
+  const peers = revealElements.filter(
+    (other) => other.parentElement === element.parentElement,
+  );
+  if (peers.length > 1) {
+    element.classList.add(`d${Math.min(peers.indexOf(element), 5)}`);
+  }
+}
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add("in-view");
+        observer.unobserve(entry.target);
+      }
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -7% 0px" },
+  );
+  for (const element of revealElements) observer.observe(element);
+} else {
+  for (const element of revealElements) element.classList.add("in-view");
+}
+
 const english = document.documentElement.lang === "en";
 const copy = english
   ? {

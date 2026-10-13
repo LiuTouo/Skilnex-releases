@@ -11,6 +11,7 @@ const locales = [
     done: "未操作任何真實檔案",
     stale: "預覽後已變更",
     empty: "至少選擇",
+    scope: "真實桌面操作錄影",
   },
   {
     path: "en/",
@@ -18,6 +19,7 @@ const locales = [
     done: "No real files were changed",
     stale: "Files changed after",
     empty: "at least one",
+    scope: "real desktop recording",
   },
 ];
 const target = (page, id) =>
@@ -53,7 +55,7 @@ for (const locale of locales) {
       expect(
         await page.locator(`a[href="${release}"]`).count(),
       ).toBeGreaterThanOrEqual(4);
-      for (const id of ["features", "demo", "engineering", "download"]) {
+      for (const id of ["features", "native-demo", "demo", "download"]) {
         await expect(page.locator(`#${id}`)).toHaveCount(1);
       }
       const brokenAnchors = await page
@@ -85,8 +87,9 @@ for (const locale of locales) {
         "srclang",
         locale.lang === "en" ? "en" : "zh-TW",
       );
-      await expect(page.locator("#native-scope")).toContainText("debug");
-      await expect(page.locator("#native-scope")).toContainText("MCP server");
+      await expect(page.locator("#native-scope")).toContainText(
+        locale.scope,
+      );
       await expect
         .poll(() => video.evaluate((v) => v.readyState))
         .toBeGreaterThanOrEqual(1);
@@ -168,6 +171,16 @@ for (const locale of locales) {
           .screenshot({ path: testInfo.outputPath("native-demo.png") });
       });
     }
+
+    test("scroll reveals settle visible", async ({ page }) => {
+      await expect(page.locator("html")).toHaveClass(/js/);
+      await page.locator("#features").scrollIntoViewIfNeeded();
+      const first = page.locator(".feature").first();
+      await expect(first).toHaveClass(/in-view/);
+      await expect
+        .poll(() => first.evaluate((e) => getComputedStyle(e).opacity))
+        .toBe("1");
+    });
 
     test("normal preview includes both files and completes only the selected target", async ({
       page,

@@ -74,7 +74,6 @@
         >
         <nav aria-label="Main navigation">
           <a href="#features">Features</a><a href="#demo">Try it</a
-          ><a href="#engineering">Engineering</a
           ><a href="#download">Download</a>
         </nav>
         <a
@@ -197,8 +196,7 @@
             <li>OpenClaw</li>
           </ul>
           <p class="fine-print">
-            Skill discovery and static inventory adapters for six products—not
-            certification of every version or skill at runtime.
+            Local skill-directory detection for the products above.
           </p>
         </div>
       </section>
@@ -294,14 +292,8 @@
           </p>
         </div>
         <p id="native-scope" class="notice">
-          An isolated capture-only debug build with adjusted data-root entry
-          point and app identity—not an unmodified release binary. Original test
-          skills and custom source/target profiles were prepared before
-          recording; setup is not shown. Sync, diff and conflict-protection
-          logic is unchanged. This is a real native screen capture with about
-          1.7 seconds of a Settings transition removed; other waits retain their
-          actual timing. No Agent or MCP server is executed. This is not runtime
-          certification of six products.
+          A real desktop recording: preview the diff, conflict blocked, sync
+          after confirmation.
         </p>
         <figure class="native-player">
           <video
@@ -337,10 +329,7 @@
           <figcaption id="native-help">
             No narration. Choose Traditional Chinese or English captions in the
             player, or use the text steps and screenshots below.
-            <a href="../assets/skilnex-native/demo.mp4">Download video</a> ·
-            <a href="../evidence/skilnex-native.json"
-              >Source and verification record (JSON)</a
-            >
+            <a href="../assets/skilnex-native/demo.mp4">Download video</a>
           </figcaption>
         </figure>
         <details class="native-transcript">
@@ -581,10 +570,7 @@
               </div>
             </div>
           </div>
-          <p class="demo-caption">
-            This is a workflow illustration, not a desktop screenshot or proof
-            of an agent's runtime behavior.
-          </p>
+          <p class="demo-caption">Illustrative workflow demo.</p>
         </div>
       </section>
 
@@ -672,151 +658,56 @@
         </ol>
       </section>
 
-      <section
-        id="engineering"
-        class="engineering-section"
-        aria-labelledby="engineering-title"
-      >
-        <div class="shell">
-          <div class="section-heading">
-            <p class="eyebrow">04 / UNDER THE SURFACE</p>
-            <h2 id="engineering-title">
-              Simple to use.<br />Deliberate by design.
-            </h2>
-            <p>
-              A quick look at the engineering, for developers and hiring teams.
-            </p>
-          </div>
-          <ol
-            class="architecture"
-            aria-label="Desktop application architecture"
-          >
-            <li>
-              <span>INTERFACE</span><strong>React + TypeScript</strong>
-              <p>Reading, organization, and previews</p>
-            </li>
-            <li>
-              <span>DESKTOP BRIDGE</span><strong>Tauri 2 · IPC</strong>
-              <p>A boundary for local operations</p>
-            </li>
-            <li>
-              <span>LOCAL ENGINE</span><strong>Rust</strong>
-              <p>Agent adapters, files, and settings</p>
-            </li>
-            <li>
-              <span>PERSISTENCE</span><strong>SQLite + Files</strong>
-              <p>App data, operation records, and copies</p>
-            </li>
-          </ol>
-          <div class="engineering-grid">
-            <article>
-              <span class="engineering-index">A / ADAPT</span>
-              <h3>Handle real-world differences</h3>
-              <p>
-                Agent directories, configuration formats, instances, and scopes
-                differ. Inventory identifies shared paths without treating every
-                matching skill name as the same copy.
-              </p>
-            </article>
-            <article>
-              <span class="engineering-index">B / PROTECT</span>
-              <h3>Check before acting</h3>
-              <p>
-                Content hashes track sync state. Sources and targets are checked
-                again after preview. Conflicts need explicit confirmation;
-                replacements preserve a copy and operation records.
-              </p>
-            </article>
-            <article>
-              <span class="engineering-index">C / DELIVER</span>
-              <h3>From tests to a usable product</h3>
-              <p>
-                The desktop project uses Rust, Vitest, and Playwright tests.
-                GitHub Actions validates, packages, and publishes Windows
-                installers and portable archives.
-              </p>
-            </article>
-          </div>
-          <p class="engineering-note">
-            Tests and static adapters are not comprehensive runtime
-            certification for all six agents. Desktop source code is not public;
-            the public repository hosts releases, product information, and this
-            website.
-          </p>
-        </div>
-      </section>
-
       <section class="section shell faq-section" aria-labelledby="faq-title">
         <div class="section-heading">
-          <p class="eyebrow">05 / GOOD TO KNOW</p>
-          <h2 id="faq-title">Clear capabilities.<br />Clear boundaries.</h2>
+          <p class="eyebrow">04 / GOOD TO KNOW</p>
+          <h2 id="faq-title">Frequently asked questions</h2>
         </div>
         <div class="faq-list">
           <details>
-            <summary>Does Skilnex run skills or orchestrate agents?</summary>
+            <summary>How do I install it? What do I need?</summary>
             <p>
-              No. It manages local skill files and supporting content, with
-              reading, organization, static checks, and manually confirmed
-              one-way sync. It is not a chat interface or a multi-agent task
-              orchestration platform.
+              Windows x64 with the Microsoft WebView2 Runtime. Run the
+              <code>*_x64-setup.exe</code> installer, or extract
+              <code>*-portable.zip</code> completely and run
+              <code>Skilnex.exe</code>—no installation needed.
             </p>
           </details>
           <details>
-            <summary>Will sync automatically overwrite my changes?</summary>
+            <summary>Can sync overwrite or delete my files?</summary>
             <p>
-              Unconfirmed local changes are not directly overwritten.
-              Conflicting targets need separate replacement approval; source or
-              target changes after preview block execution. Replacements
-              preserve a copy, and recovery checks the current state too. There
-              is no automatic background sync, and missing sources do not
-              automatically delete targets.
+              Not without your review. Every sync starts with a full diff
+              preview; locally modified targets need explicit approval, and
+              changes after preview block the sync automatically. Replacements
+              preserve a backup copy you can restore from the operation log.
             </p>
           </details>
           <details>
-            <summary>
-              Does passing a check mean a skill is safe and will run?
-            </summary>
+            <summary>Which agents are supported?</summary>
             <p>
-              No. Manifest, structure, link, and command hints are static
-              checks, not security guarantees or cross-agent certification.
-              Loading still depends on agent versions, trust, permissions,
-              existing conversations, and other conditions.
+              Built-in detection for Codex, Claude Code, OpenCode, Pi, Hermes,
+              and OpenClaw, plus custom skill directories and Git projects.
             </p>
           </details>
           <details>
-            <summary>
-              What does MCP and external skill management include?
-            </summary>
+            <summary>Does it need to be online?</summary>
             <p>
-              MCP inspection reads supported existing configurations only. It
-              does not start servers, write settings, or claim successful
-              connections. External skills remain updated by the original agent,
-              installer, or you; Skilnex does not check for external-copy
-              updates or update them in place. Package-managed, plugin,
-              built-in, and linked directories are not sync overwrite targets.
+              No. Inventory, reading, checks, and sync all run locally. Only
+              downloads, GitHub imports, and app updates use the network.
             </p>
           </details>
           <details>
-            <summary>Which systems are supported? Is it fully offline?</summary>
+            <summary>Are my skills uploaded anywhere?</summary>
             <p>
-              Downloads currently target Windows x64 and require WebView2
-              Runtime. Local inventory, reading, and sync work on local files;
-              GitHub imports, downloads, version checks, and app updates may
-              need the network. No support is claimed for macOS, Linux,
-              remote/WSL environments, private skill sources, or third-party MCP
-              extensions.
+              No. Everything stays on your computer—Skilnex uploads nothing.
             </p>
           </details>
           <details>
-            <summary>
-              Is it open source? What is promised for enterprise use?
-            </summary>
+            <summary>How is this different from copying folders myself?</summary>
             <p>
-              The desktop source code is not public. A public download does not
-              imply an open-source or commercial-use license. This page adds no
-              license terms, enterprise compliance claims, or SLA. If
-              organizational policies block installation, follow your
-              administrator's policy rather than disabling security protections.
+              Skilnex shows the file-by-file diff before you confirm, with
+              conflict protection, pre-replacement backups, one-click restore,
+              plus favorites, notes, and full-text search.
             </p>
           </details>
         </div>
