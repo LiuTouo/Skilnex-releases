@@ -640,6 +640,55 @@ html:lang(en) .hero h1 {
   margin-bottom: 4px;
   font-weight: 600;
 }
+.native-player,
+.native-stills figure {
+  margin: 0;
+}
+.native-player {
+  margin-top: 24px;
+}
+.native-player video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--forest);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.native-demo figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.native-transcript {
+  margin-top: 24px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.native-transcript summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+.native-transcript li + li {
+  margin-top: 12px;
+}
+.native-stills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 24px;
+  margin: 24px 0;
+}
+.native-stills img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+}
+.native-next {
+  margin-top: 24px;
+}
+
 .demo-section {
   padding-block: 90px 70px;
   background: #e9eee5;

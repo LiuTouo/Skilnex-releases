@@ -78,8 +78,8 @@
           ><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor">
             <path
               d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82a7.42 7.42 0 0 0-4 0c-1.53-1.04-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"
-            /></svg></a
-        >
+            /></svg
+        ></a>
         <a
           class="language-link"
           href="en/"
@@ -112,8 +112,8 @@
               class="button primary"
               href="https://github.com/LiuTouo/Skilnex-releases/releases/latest"
               >下載 Windows 版 <span aria-hidden="true">↗</span></a
-            ><a class="button secondary" href="#demo"
-              >先體驗，再下載 <span aria-hidden="true">↓</span></a
+            ><a class="button secondary" href="#native-demo"
+              >看真實桌面操作 <span aria-hidden="true">↓</span></a
             >
           </div>
           <p class="hero-note">
@@ -256,6 +256,116 @@
             匯入／匯出。
           </p>
         </div>
+      </section>
+
+      <section
+        id="native-demo"
+        class="section shell native-demo"
+        aria-labelledby="native-title"
+      >
+        <div class="section-heading">
+          <p class="eyebrow">NATIVE / VERIFIED FILE OPERATIONS</p>
+          <h2 id="native-title">預覽過，不代表可以直接覆寫。</h2>
+          <p>57 秒真實桌面操作：預覽後改動目標，讓過期檢查實際擋下一次同步。</p>
+        </div>
+        <p id="native-scope" class="notice">
+          隔離擷取用 debug
+          版，資料根目錄入口與應用程式識別已調整，非未修改的發行 binary。
+          原創測試技能與自訂來源／目標預先建立；準備未錄。同步、差異與衝突防護邏輯未修改。
+          影片為真實 native 畫面擷取，已剪除約 1.7
+          秒切換設定的轉場；其餘等待依原時間保留。 沒有執行 Agent 或 MCP
+          server，也不是六種產品的 runtime 認證。
+        </p>
+        <figure class="native-player">
+          <video
+            controls
+            playsinline
+            preload="metadata"
+            poster="assets/skilnex-native/cover-source.png"
+            width="1440"
+            height="1060"
+            aria-labelledby="native-title"
+            aria-describedby="native-scope native-help"
+          >
+            <source src="assets/skilnex-native/demo.mp4" type="video/mp4" />
+            <track
+              kind="captions"
+              src="assets/skilnex-native/demo.zh-TW.vtt"
+              srclang="zh-TW"
+              label="繁體中文"
+              default
+            />
+            <track
+              kind="captions"
+              src="assets/skilnex-native/demo.en.vtt"
+              srclang="en"
+              label="English"
+            />
+            <p>
+              無法播放影片？<a href="assets/skilnex-native/demo.mp4">下載 MP4</a
+              >，或閱讀下方靜態截圖與文字步驟。
+            </p>
+          </video>
+          <figcaption id="native-help">
+            無旁白。可在播放器選擇繁中或英文字幕；下方另有文字步驟與截圖。
+            <a href="assets/skilnex-native/demo.mp4">下載影片</a> ·
+            <a href="evidence/skilnex-native.json">來源與驗證紀錄（JSON）</a>
+          </figcaption>
+        </figure>
+        <details class="native-transcript">
+          <summary>靜態截圖與文字步驟（無法播放時也能閱讀）</summary>
+          <ol>
+            <li>盤點兩個自訂測試目錄，選擇 code-review 來源與 Demo Target。</li>
+            <li>真實差異視窗並列目標現有內容與來源，顯示兩個差異檔案。</li>
+            <li>
+              測試腳本在畫面外修改目標後，按下確認。native backend
+              回報「Destination changed after preview; scan and review
+              again」；檔案雜湊證明目標未被覆寫、來源未變。
+            </li>
+            <li>
+              重新預覽，外部修改仍可見。再次檢查衝突並明確勾選同意取代後，才完成同步。
+            </li>
+            <li>
+              在目標閱讀器與操作日誌對照結果。SHA-256
+              驗證來源不變、目標等於來源，且備份保留被取代前的目標內容。
+            </li>
+          </ol>
+          <div class="native-stills">
+            <figure>
+              <a href="assets/skilnex-native/stale-blocked.png"
+                ><img
+                  src="assets/skilnex-native/stale-blocked.png"
+                  width="1728"
+                  height="1152"
+                  loading="lazy"
+                  alt="真實 Skilnex 衝突差異視窗；上方錯誤訊息表示目標於預覽後改變，要求重新檢查"
+              /></a>
+              <figcaption>實際 apply 被過期檢查阻擋。</figcaption>
+            </figure>
+            <figure>
+              <a href="assets/skilnex-native/operations.png"
+                ><img
+                  src="assets/skilnex-native/operations.png"
+                  width="1728"
+                  height="1152"
+                  loading="lazy"
+                  alt="Skilnex 操作日誌顯示中性測試目錄的 sync 已完成，並提供預覽還原按鈕"
+              /></a>
+              <figcaption>
+                本次及先前驗證的真實同步紀錄；未展示還原執行。
+              </figcaption>
+            </figure>
+          </div>
+          <p>
+            <a href="assets/skilnex-native/demo.zh-TW.vtt">繁中字幕文字</a> ·
+            <a href="assets/skilnex-native/demo.en.vtt" lang="en"
+              >English captions</a
+            >
+          </p>
+        </details>
+        <p class="native-next">
+          <a href="#demo">接著操作下方的虛構資料互動示範 ↓</a>
+        </p>
       </section>
 
       <section id="demo" class="demo-section" aria-labelledby="demo-title">

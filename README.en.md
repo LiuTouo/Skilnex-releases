@@ -45,26 +45,30 @@
 
 ---
 
+## Real desktop demonstration
+
+[Watch 57 seconds of real operation, bilingual captions and screenshots](https://liutouo.github.io/Skilnex-releases/en/#native-demo): preview differences → edit the test target after preview → stale check blocks apply → review again → sync and inspect the activity log. Uses an isolated capture debug build (adjusted data roots and identity) and original test skills. Setup is not recorded; a brief Settings transition is cut. File hashes verify source, target and backup contents. No Agent or MCP server execution or six-product runtime certification is claimed; the existing browser demo still uses fictional data.
+
 ## Who is it for?
 
 Keep working with the agents you know. Let Skilnex bring clarity to the skills around them.
 
-| Find the source | Keep things organized | Sync with confidence |
-| :--- | :--- | :--- |
+| Find the source                                                                        | Keep things organized                                                               | Sync with confidence                                                                 |
+| :------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------- |
 | You use several agents and want to know where each skill lives and where it came from. | Your collection needs search, groups, favorites, and notes—not more folder hunting. | You want to reuse skills in another agent while staying in control of local changes. |
 
 > Skilnex manages **the skill files and supporting content that agents read**. It is not a chat interface and does not execute skills on an agent's behalf.
 
 ## What can you do?
 
-| Capability | What it means for you |
-| :--- | :--- |
-| **Inventory & discovery** | See sources, agents, global/project locations, and multiple instances; identify shared paths. |
-| **Reading & organization** | Search full text, read `SKILL.md` and attachments, and add favorites, notes, and custom groups. |
-| **Preview & sync** | Choose a local source and targets, preview changes across the folder, then confirm a one-way copy. |
-| **Conflicts & recovery** | Explicitly approve replacing modified targets; changes after preview block execution; replacements preserve a recoverable copy. |
-| **MCP configuration** | Read existing configurations and agent associations in supported formats. No server startup or configuration writes. |
-| **Prompt management** | Categorize, tag, favorite, and copy prompts, with JSON import/export. |
+| Capability                 | What it means for you                                                                                                           |
+| :------------------------- | :------------------------------------------------------------------------------------------------------------------------------ |
+| **Inventory & discovery**  | See sources, agents, global/project locations, and multiple instances; identify shared paths.                                   |
+| **Reading & organization** | Search full text, read `SKILL.md` and attachments, and add favorites, notes, and custom groups.                                 |
+| **Preview & sync**         | Choose a local source and targets, preview changes across the folder, then confirm a one-way copy.                              |
+| **Conflicts & recovery**   | Explicitly approve replacing modified targets; changes after preview block execution; replacements preserve a recoverable copy. |
+| **MCP configuration**      | Read existing configurations and agent associations in supported formats. No server startup or configuration writes.            |
+| **Prompt management**      | Categorize, tag, favorite, and copy prompts, with JSON import/export.                                                           |
 
 ### Agent integrations
 
@@ -82,10 +86,10 @@ An adapter does not certify every version, loading rule, or runtime environment.
 
 Open the **[latest Release](https://github.com/LiuTouo/Skilnex-releases/releases/latest)** and select an asset:
 
-| Windows installer | Portable edition |
-| :--- | :--- |
-| Download `*_x64-setup.exe` and follow the installer. | Extract the entire `*-windows-x64-portable.zip`, then run `Skilnex.exe`. |
-| App data lives in your user-local application data directory. | Keep `portable.flag` and `data` with the app when moving it. |
+| Windows installer                                             | Portable edition                                                         |
+| :------------------------------------------------------------ | :----------------------------------------------------------------------- |
+| Download `*_x64-setup.exe` and follow the installer.          | Extract the entire `*-windows-x64-portable.zip`, then run `Skilnex.exe`. |
+| App data lives in your user-local application data directory. | Keep `portable.flag` and `data` with the app when moving it.             |
 
 **Requirements: Windows x64 and Microsoft WebView2 Runtime.** The installer can download WebView2 if it is missing; the portable version also requires the Runtime. You do not need Node.js, Rust, or development tools.
 
@@ -118,10 +122,10 @@ Downloads currently target **Windows x64**. No support is claimed for macOS, Lin
 React / TypeScript  →  Tauri 2 IPC  →  Rust  →  SQLite + local files
 ```
 
-| Engineering area | Design focus |
-| :--- | :--- |
-| **Agent integrations** | Heterogeneous configurations and scopes, source attribution, and shared-path deduplication. |
-| **Operation safeguards** | Content hashes, stale-preview checks, conflict confirmation, backups before replacement, and operation records. |
+| Engineering area            | Design focus                                                                                                                  |
+| :-------------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
+| **Agent integrations**      | Heterogeneous configurations and scopes, source attribution, and shared-path deduplication.                                   |
+| **Operation safeguards**    | Content hashes, stale-preview checks, conflict confirmation, backups before replacement, and operation records.               |
 | **Verification & delivery** | The desktop project has Rust, Vitest, and Playwright tests, plus GitHub Actions validation, packaging, and release workflows. |
 
 Tests do not mean every agent has passed live skill-execution testing. The **website checks** badge above represents checks for this public website only.

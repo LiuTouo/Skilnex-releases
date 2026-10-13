@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "product": "Skilnex",
+  "appVersion": "0.1.12",
+  "sourceCommit": "c555f26f3d98fec7bff6522a0be3a19563405f2b",
+  "websiteBaseCommit": "3079c2b5aba66e775de8ef0dedffeee17764392f",
+  "capturedAt": "2026-10-13T07:32:14Z",
+  "build": "Isolated capture-only debug build, not an unmodified release binary",
+  "isolationAdjustments": [
+    "Fail-closed test home entry point; no fallback to Windows user home",
+    "Capture-only application identifier",
+    "Portable app data and separate WebView profile",
+    "Allowlisted process environment; all Agent roots isolated"
+  ],
+  "unchanged": "Inventory, diff, stale checks, explicit conflict approval, sync and backup product logic were not modified.",
+  "fixture": {
+    "kind": "Original synthetic code-review skill with SKILL.md and references/checklist.md",
+    "agents": [
+      "Demo Source",
+      "Demo Target"
+    ],
+    "root": "D:/Skilnex-Portfolio-Demo-20261013",
+    "license": "Original demonstration text created for this task; CC0-1.0",
+    "preparation": "Fixture files and custom Agent profiles were prepared before recording. The target edit after preview was made off-screen by the test script."
+  },
+  "recording": {
+    "kind": "Real native WebView2 CDP screencast, not a static step guide",
+    "rawSeconds": 58.308,
+    "publicSeconds": 56.633333,
+    "frames": 396,
+    "encoding": "H.264, 30 fps output, silent; unchanged frames held for actual elapsed time",
+    "edits": [
+      {
+        "fromSeconds": 50.594,
+        "toSeconds": 52.269,
+        "reason": "Remove the brief Settings transition showing a private app-data path"
+      }
+    ],
+    "presentation": "Scaled uniformly to 1440x960; 100px blank caption margin added below the application. No DOM replacement, mocked invoke results, or fabricated UI."
+  },
+  "verification": {
+    "nativeBackend": true,
+    "staleApplyError": "Destination changed after preview; scan and review again",
+    "staleTargetNotOverwritten": true,
+    "sourceUnchanged": true,
+    "finalTargetMatchesSource": true,
+    "backupMatchesPreApplyTarget": true,
+    "operationStatus": "success",
+    "sourceHashes": {
+      "references/checklist.md": "1690d691b31c4dac810fda89d082d9d8025a14afe2f7cf6eaaa91c022544a5d6",
+      "SKILL.md": "11658e540e247dd377ce6b435d3cc39dbf7bd2cf3ec824ae27d1ff24449118c2"
+    },
+    "staleTargetHashes": {
+      "references/checklist.md": "28b22e24a34036e27944eed1b08b72d5a4e444854b73f7891b70322f434371b0",
+      "SKILL.md": "efb99eecb5710fa79cacffedad211d5af02029a76b9db238fc22c90cf2e919a5"
+    },
+    "finalTargetHashes": {
+      "references/checklist.md": "1690d691b31c4dac810fda89d082d9d8025a14afe2f7cf6eaaa91c022544a5d6",
+      "SKILL.md": "11658e540e247dd377ce6b435d3cc39dbf7bd2cf3ec824ae27d1ff24449118c2"
+    },
+    "backupHashes": {
+      "references/checklist.md": "28b22e24a34036e27944eed1b08b72d5a4e444854b73f7891b70322f434371b0",
+      "SKILL.md": "efb99eecb5710fa79cacffedad211d5af02029a76b9db238fc22c90cf2e919a5"
+    }
+  },
+  "scope": "Custom fixture roots only. No Agent or MCP server execution. Six-product static adapters do not imply runtime certification.",
+  "rights": "Application UI captured at the owner’s request. Original fictional fixture; no third-party photos, music or stock footage.",
+  "media": {
+    "cover-source.png": {
+      "bytes": 180514,
+      "sha256": "c7b8c6c4e1c7dcd9fa62673794f3b3a7410ac995bf123f7c5e885384d3d86a02"
+    },
+    "stale-blocked.png": {
+      "bytes": 187496,
+      "sha256": "154bf9aee27cb2e3dd43e4ae5fa8d92d66918fe61315f401671f8b8a298825d8"
+    },
+    "operations.png": {
+      "bytes": 75565,
+      "sha256": "3d943b279c58f535539be1c364e46976bee1fbdf77fc94eef07127ed80014f5b"
+    },
+    "demo.mp4": {
+      "bytes": 1257482,
+      "sha256": "9f3eedcf3110da5130b346b7486f5c640cd87d904422549efa37fb5246c98eab"
+    },
+    "demo.zh-TW.vtt": {
+      "bytes": 1168,
+      "sha256": "be856cd84720b1c9af0163fa8d5fb549b3b81bd470731af9af4a326697016577"
+    },
+    "demo.en.vtt": {
+      "bytes": 1212,
+      "sha256": "90f8975e3d0b2bea5b04b28c3172b7f701530346a01e9e7a0d221a1f4f2630cf"
+    }
+  }
+}
