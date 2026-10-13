@@ -151,6 +151,12 @@ const template = document.querySelector("#diff-template");
 let preview = null;
 let completed = false;
 
+function focusDemo(element) {
+  // Step changes need visible focus now, not partway through native smooth scrolling.
+  element.focus({ preventScroll: true });
+  element.scrollIntoView({ block: "center", behavior: "instant" });
+}
+
 function selectedTargets() {
   return inputs.filter((input) => input.checked).map((input) => input.value);
 }
@@ -258,7 +264,7 @@ previewButton.addEventListener("click", () => {
   panel.hidden = false;
   setStep("preview");
   updateApproval();
-  document.querySelector("#preview-title").focus();
+  focusDemo(document.querySelector("#preview-title"));
 });
 
 applyButton.addEventListener("click", () => {
@@ -278,13 +284,13 @@ applyButton.addEventListener("click", () => {
   result.hidden = false;
   setStep("complete");
   announce(copy.done);
-  document.querySelector("#result-title").focus();
+  focusDemo(document.querySelector("#result-title"));
 });
 
 resetButton.addEventListener("click", () => {
   for (const input of inputs) input.checked = input.value === "codex";
   clearPreview(true);
-  inputs[0].focus();
+  focusDemo(inputs[0]);
 });
 
 clearPreview(true);

@@ -210,10 +210,20 @@ for (const path of ["./", "en/"]) {
           path: testInfo.outputPath("hero.png"),
           animations: "disabled",
         });
-        await page.locator("#preview-button").click();
-        const focused = await page.locator("#preview-title").boundingBox();
-        const header = await page.locator(".site-header").boundingBox();
-        expect(focused.y).toBeGreaterThanOrEqual(header.y + header.height);
+        for (const [trigger, destination] of [
+          ["#preview-button", "#preview-title"],
+          ["#apply-button", "#result-title"],
+          ["#reset-demo", 'input[name="target"][value="codex"]'],
+        ]) {
+          await page.locator(trigger).click();
+          await expect(page.locator(destination)).toBeFocused();
+          const focused = await page.locator(destination).boundingBox();
+          const header = await page.locator(".site-header").boundingBox();
+          expect(focused.y).toBeGreaterThanOrEqual(header.y + header.height);
+          expect(focused.y + focused.height).toBeLessThanOrEqual(
+            viewport.height,
+          );
+        }
       });
     }
 
