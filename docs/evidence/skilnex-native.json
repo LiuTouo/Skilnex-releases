@@ -83,12 +83,12 @@
       "sha256": "9f3eedcf3110da5130b346b7486f5c640cd87d904422549efa37fb5246c98eab"
     },
     "demo.zh-TW.vtt": {
-      "bytes": 1168,
-      "sha256": "be856cd84720b1c9af0163fa8d5fb549b3b81bd470731af9af4a326697016577"
+      "bytes": 966,
+      "sha256": "cbfed9d82c8f872c341af936c2a5bcf0d95f6e22d1ad83fb19f657818fea5d74"
     },
     "demo.en.vtt": {
-      "bytes": 1212,
-      "sha256": "90f8975e3d0b2bea5b04b28c3172b7f701530346a01e9e7a0d221a1f4f2630cf"
+      "bytes": 1043,
+      "sha256": "03db79f97ee8b74d24c9fad939cd0d2ef284086e8b3c5e71d764447552c67902"
     }
   }
 }

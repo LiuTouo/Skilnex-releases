@@ -47,7 +47,7 @@
 
 ## Real desktop demonstration
 
-[Watch 57 seconds of real operation, bilingual captions and screenshots](https://liutouo.github.io/Skilnex-releases/en/#native-demo): preview differences → edit the test target after preview → stale check blocks apply → review again → sync and inspect the activity log. Uses an isolated capture debug build (adjusted data roots and identity) and original test skills. Setup is not recorded; a brief Settings transition is cut. File hashes verify source, target and backup contents. No Agent or MCP server execution or six-product runtime certification is claimed; the existing browser demo still uses fictional data.
+[Watch 57 seconds of real desktop operation, bilingual captions, and screenshots](https://liutouo.github.io/Skilnex-releases/en/#native-demo): compare differences → review again if content changes → approve replacement → see the result. The recording uses demonstration data. The [interactive walkthrough](https://liutouo.github.io/Skilnex-releases/en/#demo) uses fictional data and never touches your local files. Capture provenance and verification records remain in the [media record](docs/evidence/skilnex-native.json).
 
 ## Who is it for?
 
@@ -129,8 +129,6 @@ React / TypeScript  →  Tauri 2 IPC  →  Rust  →  SQLite + local files
 | **Verification & delivery** | The desktop project has Rust, Vitest, and Playwright tests, plus GitHub Actions validation, packaging, and release workflows. |
 
 Tests do not mean every agent has passed live skill-execution testing. The **website checks** badge above represents checks for this public website only.
-
-**[Read the engineering overview →](https://liutouo.github.io/Skilnex-releases/en/#engineering)**
 
 ## About this repository
 

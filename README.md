@@ -47,7 +47,7 @@
 
 ## 真實桌面展示
 
-[觀看 57 秒真實操作影片、雙語字幕與靜態截圖](https://liutouo.github.io/Skilnex-releases/#native-demo)：差異預覽 → 預覽後修改測試目標 → 過期檢查阻擋 → 重新確認 → 同步與操作紀錄。使用隔離擷取 debug 版（資料根與識別已調整）及原創測試技能；準備未錄，短暫設定轉場已剪除。來源／目標／備份經檔案雜湊核對。不執行 Agent 或 MCP server，不代表六產品 runtime 認證；既有瀏覽器互動示範仍是虛構資料。
+[觀看 57 秒實際桌面操作、雙語字幕與靜態截圖](https://liutouo.github.io/Skilnex-releases/#native-demo)：比較差異 → 內容有變動時重新檢查 → 確認取代 → 查看同步結果。影片使用示範資料錄製；[互動體驗](https://liutouo.github.io/Skilnex-releases/#demo) 使用虛構資料，不會操作你的本機檔案。錄製來源與驗證紀錄保留於[媒體資料](docs/evidence/skilnex-native.json)。
 
 ## 適合什麼情境？
 
@@ -129,8 +129,6 @@ React / TypeScript  →  Tauri 2 IPC  →  Rust  →  SQLite + 本機檔案
 | **驗證與交付** | 桌面專案有 Rust、Vitest、Playwright 測試，以及 GitHub Actions 驗證／封裝／發布流程。 |
 
 測試不代表每種 Agent 都已通過實際技能執行驗證；上方 **website checks** 徽章只代表此公開網站的檢查狀態。
-
-**[查看工程設計摘要 →](https://liutouo.github.io/Skilnex-releases/#engineering)**
 
 ## 關於這個 repository
 

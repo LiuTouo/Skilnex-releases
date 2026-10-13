@@ -1,59 +1,108 @@
-// Motion: tag reveal targets and reveal them as they enter the viewport.
-// The html.js gate keeps content visible without JavaScript or under reduced motion.
-document.documentElement.classList.add("js");
-const revealElements = [
-  ...document.querySelectorAll(
-    [
-      ".section-heading",
-      ".feature-grid > .feature",
-      ".secondary-features > p",
-      ".native-player",
-      ".native-transcript",
-      ".download-options > article",
-      ".quick-start > li",
-      ".agent-strip li",
-      ".faq-list > details",
-      ".closing > *",
-    ].join(", "),
-  ),
-];
-for (const element of revealElements) {
-  element.classList.add("reveal");
-  const peers = revealElements.filter(
-    (other) => other.parentElement === element.parentElement,
-  );
-  if (peers.length > 1) {
-    element.classList.add(`d${Math.min(peers.indexOf(element), 5)}`);
+function initMotion() {
+  const root = document.documentElement;
+  root.classList.add("js");
+  if (!("IntersectionObserver" in window)) return;
+
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  const wide = matchMedia("(min-width: 1024px) and (min-height: 760px)");
+  const story = document.querySelector(".feature-story");
+  const steps = [...story.querySelectorAll("[data-scene]")];
+  const panels = [...story.querySelectorAll("[data-panel]")];
+  const reveals = [
+    ...document.querySelectorAll(
+      ".section-heading, .feature, .secondary-features > p, .download-options > article, .quick-start > li, .closing-inner > *",
+    ),
+  ];
+  let revealObserver;
+  let sceneObserver;
+
+  for (const element of reveals) {
+    const peers = reveals.filter(
+      (other) => other.parentElement === element.parentElement,
+    );
+    element.classList.add("reveal", `d${Math.min(peers.indexOf(element), 5)}`);
   }
-}
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        entry.target.classList.add("in-view");
-        observer.unobserve(entry.target);
+
+  function showScene(name) {
+    story.dataset.activeScene = name;
+    for (const panel of panels) {
+      panel.classList.toggle("is-active", panel.dataset.panel === name);
+    }
+  }
+
+  function refreshMotion() {
+    revealObserver?.disconnect();
+    sceneObserver?.disconnect();
+    root.classList.remove("motion-ready", "story-enabled");
+    if (reduced.matches) return;
+
+    // Motion is optional: a failed observer must never hide the site or break the demo.
+    try {
+      revealObserver = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            entry.target.classList.add("in-view");
+            revealObserver.unobserve(entry.target);
+          }
+        },
+        { threshold: 0.08 },
+      );
+      for (const element of reveals) {
+        if (!element.classList.contains("in-view"))
+          revealObserver.observe(element);
       }
-    },
-    { threshold: 0.15, rootMargin: "0px 0px -7% 0px" },
-  );
-  for (const element of revealElements) observer.observe(element);
-} else {
-  for (const element of revealElements) element.classList.add("in-view");
+      root.classList.add("motion-ready");
+
+      if (wide.matches) {
+        const visible = new Map();
+        sceneObserver = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting)
+                visible.set(entry.target, entry.intersectionRatio);
+              else visible.delete(entry.target);
+            }
+            const active = [...visible].sort((a, b) => b[1] - a[1])[0];
+            if (active) showScene(active[0].dataset.scene);
+          },
+          {
+            rootMargin: "-35% 0px -35% 0px",
+            threshold: [0, 0.25, 0.5, 0.75, 1],
+          },
+        );
+        showScene(story.dataset.activeScene);
+        root.classList.add("story-enabled");
+        for (const step of steps) sceneObserver.observe(step);
+      }
+    } catch {
+      revealObserver?.disconnect();
+      sceneObserver?.disconnect();
+      root.classList.remove("motion-ready", "story-enabled");
+    }
+  }
+
+  root.addEventListener("focusin", (event) => {
+    const element = event.target.closest(".reveal");
+    if (!element) return;
+    element.classList.add("in-view");
+    revealObserver?.unobserve(element);
+  });
+  reduced.addEventListener("change", refreshMotion);
+  wide.addEventListener("change", refreshMotion);
+  refreshMotion();
 }
 
 const english = document.documentElement.lang === "en";
 const copy = english
   ? {
       choose: "Choose at least one target to preview.",
-      selected: "Selection updated. Preview the differences before continuing.",
-      initial: "Codex is selected. Preview the content before copying.",
-      ready:
-        "Preview ready. Review both files for each target before confirming.",
+      selected:
+        "Targets changed. Preview the differences again before continuing.",
+      initial: "Codex is selected. See what will be copied first.",
+      ready: "Review the files for each target, then confirm the sync.",
       conflict:
-        "Pi has local edits. Review the differences and explicitly approve replacement to continue.",
-      stale:
-        "Files changed after this preview. Sync is blocked. Preview again and review any conflicts.",
+        "Pi has local edits. Review the differences and approve replacement to continue.",
       done: "Demo sync complete. No real files were changed.",
       missing: "New copy",
       outdated: "Source updated",
@@ -67,32 +116,30 @@ const copy = english
   : {
       choose: "請至少選擇一個目標，才能預覽變更。",
       selected: "目標已變更，請重新預覽差異再繼續。",
-      initial: "已選擇 Codex。先預覽，檢查將複製的內容。",
-      ready: "預覽已就緒。確認前，請檢查每個目標的兩個檔案。",
-      conflict: "Pi 有本機修改。請先檢查差異，並明確確認取代才能繼續。",
-      stale: "檔案在預覽後已變更，同步已阻擋。請重新預覽，並再次確認衝突。",
+      initial: "已選擇 Codex。先看看將複製的內容。",
+      ready: "先看完每個目標的檔案差異，再確認同步。",
+      conflict: "Pi 有自己的修改。請檢查差異，並確認同意取代才能繼續。",
       done: "示範同步完成。未操作任何真實檔案。",
       missing: "建立新副本",
       outdated: "來源已更新",
       modified: "目標有修改",
       added: "新增檔案",
       changed: "變更檔案",
-      confirm: "我已檢視 Pi 的本機修改，並同意取代這份示範副本。",
+      confirm: "我已檢視 Pi 的修改，並同意取代這份示範副本。",
       synced: "— 示範內容已一致",
     };
 
 // Fictional fixtures only: no filesystem, agent, model, or network access.
 const targets = {
-  codex: { name: "Codex", state: "missing", folder: "codex" },
-  opencode: { name: "OpenCode", state: "outdated", folder: "opencode" },
-  pi: { name: "Pi", state: "modified", folder: "pi" },
+  codex: { name: "Codex", state: "missing" },
+  opencode: { name: "OpenCode", state: "outdated" },
+  pi: { name: "Pi", state: "modified" },
 };
 const app = document.querySelector("#demo-app");
 const picker = document.querySelector("#target-picker");
 const inputs = [...picker.querySelectorAll('input[name="target"]')];
 const previewButton = document.querySelector("#preview-button");
 const applyButton = document.querySelector("#apply-button");
-const invalidateButton = document.querySelector("#invalidate-button");
 const resetButton = document.querySelector("#reset-demo");
 const status = document.querySelector("#demo-status");
 const empty = document.querySelector("#demo-empty");
@@ -102,7 +149,6 @@ const diffList = document.querySelector("#diff-list");
 const resultList = document.querySelector("#result-list");
 const template = document.querySelector("#diff-template");
 let preview = null;
-let stale = false;
 let completed = false;
 
 function selectedTargets() {
@@ -125,14 +171,12 @@ function updateApproval() {
   const unconfirmed = [...diffList.querySelectorAll("[data-confirm]")].some(
     (input) => !input.disabled && !input.checked,
   );
-  applyButton.disabled = !preview || stale || completed || unconfirmed;
-  if (stale) announce(copy.stale, true);
-  else announce(unconfirmed ? copy.conflict : copy.ready, unconfirmed);
+  applyButton.disabled = !preview || completed || unconfirmed;
+  announce(unconfirmed ? copy.conflict : copy.ready, unconfirmed);
 }
 
 function clearPreview(initial = false) {
   preview = null;
-  stale = false;
   completed = false;
   diffList.replaceChildren();
   resultList.replaceChildren();
@@ -142,7 +186,6 @@ function clearPreview(initial = false) {
   picker.disabled = false;
   previewButton.disabled = selectedTargets().length === 0;
   applyButton.disabled = true;
-  invalidateButton.disabled = true;
   setStep("select");
   announce(
     previewButton.disabled
@@ -170,8 +213,6 @@ function renderTarget(id) {
   const state = fragment.querySelector("[data-state]");
   state.textContent = copy[target.state];
   state.classList.toggle("warning", target.state === "modified");
-  fragment.querySelector("[data-target-path]").textContent =
-    `C:/Demo/${target.folder}/skills/code-review`;
   for (const label of fragment.querySelectorAll("[data-file-state]")) {
     label.textContent = target.state === "missing" ? copy.added : copy.changed;
   }
@@ -211,36 +252,21 @@ previewButton.addEventListener("click", () => {
   const selected = selectedTargets();
   if (!selected.length || completed) return;
   preview = selected;
-  stale = false;
   diffList.replaceChildren(...preview.map(renderTarget));
   empty.hidden = true;
   result.hidden = true;
   panel.hidden = false;
-  invalidateButton.disabled = false;
   setStep("preview");
   updateApproval();
   document.querySelector("#preview-title").focus();
 });
 
-invalidateButton.addEventListener("click", () => {
-  if (!preview || completed) return;
-  stale = true;
-  invalidateButton.disabled = true;
-  for (const input of diffList.querySelectorAll("[data-confirm]")) {
-    input.checked = false;
-    input.disabled = true;
-  }
-  updateApproval();
-  previewButton.focus();
-});
-
 applyButton.addEventListener("click", () => {
-  if (!preview || stale || completed || applyButton.disabled) return;
+  if (!preview || completed || applyButton.disabled) return;
   completed = true;
   picker.disabled = true;
   previewButton.disabled = true;
   applyButton.disabled = true;
-  invalidateButton.disabled = true;
   resultList.replaceChildren();
   for (const id of preview) {
     const item = document.createElement("li");
@@ -263,3 +289,4 @@ resetButton.addEventListener("click", () => {
 
 clearPreview(true);
 app.hidden = false;
+initMotion();

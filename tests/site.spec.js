@@ -9,15 +9,13 @@ const locales = [
     path: "./",
     lang: "zh-Hant",
     done: "未操作任何真實檔案",
-    stale: "預覽後已變更",
     empty: "至少選擇",
-    scope: "真實桌面操作錄影",
+    scope: "實際桌面操作",
   },
   {
     path: "en/",
     lang: "en",
     done: "No real files were changed",
-    stale: "Files changed after",
     empty: "at least one",
     scope: "real desktop recording",
   },
@@ -87,9 +85,7 @@ for (const locale of locales) {
         "srclang",
         locale.lang === "en" ? "en" : "zh-TW",
       );
-      await expect(page.locator("#native-scope")).toContainText(
-        locale.scope,
-      );
+      await expect(page.locator("#native-scope")).toContainText(locale.scope);
       await expect
         .poll(() => video.evaluate((v) => v.readyState))
         .toBeGreaterThanOrEqual(1);
@@ -125,7 +121,7 @@ for (const locale of locales) {
               i,
             ),
           )
-          .toMatch(i === 0 ? /過期檢查/ : /Stale apply/);
+          .toMatch(i === 0 ? /目標內容已變更/ : /The target changed/);
       }
       const summary = page.locator(".native-transcript summary");
       await summary.focus();
@@ -152,7 +148,7 @@ for (const locale of locales) {
       );
     });
 
-    for (const width of [360, 768, 1440]) {
+    for (const width of [360, 768, 1024, 1440]) {
       test(`native media and open transcript fit ${width}px`, async ({
         page,
       }, testInfo) => {
@@ -166,9 +162,10 @@ for (const locale of locales) {
         ).toBe(true);
         const bounds = await page.locator("#native-demo video").boundingBox();
         expect(bounds.width).toBeLessThanOrEqual(width);
-        await page
-          .locator("#native-demo")
-          .screenshot({ path: testInfo.outputPath("native-demo.png") });
+        await page.locator("#native-demo").screenshot({
+          path: testInfo.outputPath("native-demo.png"),
+          animations: "disabled",
+        });
       });
     }
 
@@ -234,25 +231,28 @@ for (const locale of locales) {
       await expect(page.locator("#result-list li")).toHaveCount(3);
     });
 
-    test("stale previews block sync, clear approval, and require review again", async ({
+    test("simplified demo has no test controls and rapid input cannot bypass approval", async ({
       page,
     }) => {
+      await expect(page.locator("#invalidate-button")).toHaveCount(0);
+      await expect(page.locator(".diff-path, .demo-source code")).toHaveCount(
+        0,
+      );
       await target(page, "pi").check();
       await page.locator("#preview-button").click();
-      await confirmation(page).check();
-      await page.locator("#invalidate-button").click();
       await expect(page.locator("#apply-button")).toBeDisabled();
-      await expect(confirmation(page)).not.toBeChecked();
-      await expect(confirmation(page)).toBeDisabled();
-      await expect(page.locator("#demo-status")).toContainText(locale.stale);
-      await expect(page.locator("#preview-button")).toBeFocused();
+      await confirmation(page).check();
+      await page.locator("#apply-button").evaluate((button) => {
+        button.click();
+        button.click();
+      });
+      await expect(page.locator("#result-list li")).toHaveCount(2);
+      await expect(page.locator("#result-title")).toBeFocused();
+      await page.locator("#reset-demo").click();
+      await target(page, "pi").check();
       await page.locator("#preview-button").click();
-      await expect(confirmation(page)).toBeEnabled();
       await expect(confirmation(page)).not.toBeChecked();
       await expect(page.locator("#apply-button")).toBeDisabled();
-      await confirmation(page).check();
-      await page.locator("#apply-button").click();
-      await expect(page.locator("#demo-result")).toBeVisible();
     });
 
     test("selection changes invalidate previews and reset restores the initial state", async ({
@@ -324,7 +324,7 @@ for (const locale of locales) {
       ).toBeGreaterThanOrEqual(2);
     });
 
-    for (const width of [360, 768, 1440]) {
+    for (const width of [360, 768, 1024, 1440]) {
       test(`layout at ${width}px remains readable during a conflict`, async ({
         page,
       }, testInfo) => {
@@ -337,6 +337,7 @@ for (const locale of locales) {
         await page.screenshot({
           path: testInfo.outputPath("landing.png"),
           fullPage: false,
+          animations: "disabled",
         });
         await target(page, "pi").check();
         await page.locator("#preview-button").click();
@@ -346,9 +347,10 @@ for (const locale of locales) {
           ),
         ).toBe(true);
         await expect(confirmation(page)).toBeVisible();
-        await page
-          .locator("#demo")
-          .screenshot({ path: testInfo.outputPath("demo.png") });
+        await page.locator("#demo").screenshot({
+          path: testInfo.outputPath("demo.png"),
+          animations: "disabled",
+        });
         await confirmation(page).check();
         await page.locator("#apply-button").click();
         await expect(page.locator("#demo-result")).toBeVisible();
@@ -366,6 +368,13 @@ for (const locale of locales) {
     await expect(page.locator("h1")).toBeVisible();
     await expect(page.locator("noscript")).toBeVisible();
     await expect(page.locator("#demo-app")).toBeHidden();
+    await expect(page.locator(".scene-panel")).toHaveCount(3);
+    for (const panel of await page.locator(".scene-panel").all()) {
+      await expect(panel).toBeVisible();
+      expect(await panel.evaluate((el) => getComputedStyle(el).opacity)).toBe(
+        "1",
+      );
+    }
     await expect(page.locator("#native-demo video")).toHaveAttribute(
       "controls",
       "",

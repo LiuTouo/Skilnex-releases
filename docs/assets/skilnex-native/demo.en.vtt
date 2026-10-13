@@ -2,41 +2,40 @@ WEBVTT
 
 1
 00:00:00.000 --> 00:00:04.000
-Isolated debug capture build; data roots and app identity adjusted.
+Start with your local skills. Find the one you want to sync.
 
 2
 00:00:04.000 --> 00:00:07.500
-Original test skills prepared before recording. This is the native inventory.
+Open code-review to read the skill and its attachments.
 
 3
 00:00:07.500 --> 00:00:13.300
-Choose the source skill and Demo Target. No Agent or MCP server is executed.
+Choose the source skill and its destination, then preview the changes.
 
 4
 00:00:13.300 --> 00:00:20.400
-Real diff: current target on the left, source on the right. Not yet synced.
+The current target is on the left, the source on the right. Compare before you decide.
 
 5
 00:00:20.400 --> 00:00:28.500
-The test script edits the target off-screen, then confirms. Stale apply is blocked; hashes verify no overwrite.
+The target changed. Preview again before syncing, rather than overwriting it.
 
 6
 00:00:28.500 --> 00:00:36.000
-Preview again: the external edit remains. Explicit replacement approval is required again.
+Review the new differences. Existing edits are preserved until you approve replacement.
 
 7
 00:00:36.000 --> 00:00:40.100
-Review the conflict, explicitly approve replacement, then confirm sync.
+Review the edits, approve replacement, and confirm the sync.
 
 8
 00:00:40.100 --> 00:00:44.000
-Sync succeeds. Checks confirm unchanged source, matching target, and a backup of the previous target.
+Sync complete. A copy of the previous target has been kept.
 
 9
 00:00:44.000 --> 00:00:50.500
-Switch the reader to demo-target to inspect the actual synced content.
+Switch to the destination to read the skill you just synced.
 
 10
 00:00:50.500 --> 00:00:56.633
-A brief Settings transition is cut. The actual activity log records success; this is not cross-product runtime certification.
-
+Open the activity log to see the sync record and find the preview-restore action.
